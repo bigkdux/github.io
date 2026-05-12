@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aotearoa Interactive | Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #0f172a; --primary-accent: #38bdf8; --text-main: #f8fafc; --glass-bg: rgba(30, 41, 59, 0.7); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); }
+        header { position: sticky; top: 0; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .nav-container a { color: var(--text-main); text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: all 0.3s ease; }
+        .nav-container a:hover, .nav-container a.active { background: var(--primary-accent); color: #0f172a; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .photo-wrapper { position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; background: #1e293b; }
+        .photo-wrapper:hover img { transform: scale(1.1); }
+        .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; color: white; font-weight: 600; transform: translateY(100%); transition: transform 0.3s ease; }
+        .photo-wrapper:hover .photo-caption { transform: translateY(0); }
+        footer { background: #0b1120; text-align: center; padding: 40px 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="staff.html">Staff Team</a>
+            <a href="applications.html">Applications</a>
+            <a href="photos.html" class="active">Photos</a>
+            <a href="https://discord.gg/yourlink" target="_blank">Discord Server</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 40px; color: var(--primary-accent);">Media Gallery</h1>
+        
+        <div class="gallery-grid">
+            <div class="photo-wrapper">
+                <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gallery Image 1">
+                <div class="photo-caption">CAD Interface Design</div>
+            </div>
+            <div class="photo-wrapper">
+                <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gallery Image 2">
+                <div class="photo-caption">Fleet Integration</div>
+            </div>
+            <div class="photo-wrapper">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gallery Image 3">
+                <div class="photo-caption">In-Game Development</div>
+            </div>
+            <!-- To add more photos, just copy and paste one of the "photo-wrapper" blocks above -->
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #94a3b8; font-size: 0.85rem;">&copy; 2026 Aotearoa Interactive. Protected under the Copyright Act 1994.</p>
+    </footer>
+</body>
+</html>

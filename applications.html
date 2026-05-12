@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aotearoa Interactive | Applications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #0f172a; --bg-card: #1e293b; --primary-accent: #38bdf8; --text-main: #f8fafc; --glass-bg: rgba(30, 41, 59, 0.7); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+        header { position: sticky; top: 0; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .nav-container a { color: var(--text-main); text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: all 0.3s ease; }
+        .nav-container a:hover, .nav-container a.active { background: var(--primary-accent); color: #0f172a; }
+        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .app-card { background: var(--bg-card); padding: 30px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .app-card.open { border-left-color: #22c55e; }
+        .app-card.closed { border-left-color: #ef4444; }
+        .apply-btn { background: var(--primary-accent); color: #000; border: none; padding: 10px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; }
+        .apply-btn:hover { box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        .apply-btn.disabled { background: #475569; color: #94a3b8; cursor: not-allowed; box-shadow: none; }
+        footer { background: #0b1120; text-align: center; padding: 40px 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="staff.html">Staff Team</a>
+            <a href="applications.html" class="active">Applications</a>
+            <a href="photos.html">Photos</a>
+            <a href="https://discord.gg/yourlink" target="_blank">Discord Server</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="margin-bottom: 30px; text-align: center;">Join the Team</h1>
+        
+        <div class="app-card open">
+            <div>
+                <h2>Support Team</h2>
+                <p style="color: #94a3b8; margin-top: 5px;">Looking for people to handle ingame bug reports, and ticket support.</p>
+                <span style="color: #f8c80b; font-weight: bold; font-size: 0.9rem;">STATUS: OPEN</span>
+            </div>
+            <a href="https://discord.gg/yourlink" class="apply-btn" target="_blank">Apply Now</a>
+        </div>
+
+        <div class="app-card open">
+            <div>
+                <h2>Development Team</h2>
+                <p style="color: #94a3b8; margin-top: 5px;">Looking for UI Designers and Scripters.</p>
+                <span style="color: #22c55e; font-weight: bold; font-size: 0.9rem;">STATUS: OPEN</span>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcYZ0AmbUMM12Dx371jrmrBdDwicXlpY77yyS6dSPMMfGBPA/viewform?usp=publish-editor" class="apply-btn" target="_blank">Apply Now</a>
+        </div>
+
+        <div class="app-card closed">
+            <div>
+                <h2>Moderation Team</h2>
+                <p style="color: #94a3b8; margin-top: 5px;">Help manage the Discord and servers.</p>
+                <span style="color: #ef4444; font-weight: bold; font-size: 0.9rem;">STATUS: CLOSED</span>
+            </div>
+            <a href="#" class="apply-btn disabled">Applications Closed</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color: #94a3b8; font-size: 0.85rem;">&copy; 2026 Aotearoa Interactive. Protected under the Copyright Act 1994.</p>
+    </footer>
+</body>
+</html>

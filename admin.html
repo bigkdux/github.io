@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management | Aotearoa Interactive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a; --sidebar: #1e293b; --accent: #38bdf8;
+            --text: #f8fafc; --danger: #ef4444; --success: #22c55e;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+
+        /* Security Barrier */
+        #login-overlay {
+            position: fixed; inset: 0; background: var(--bg); z-index: 10000;
+            display: flex; align-items: center; justify-content: center; backdrop-filter: blur(20px);
+        }
+        .login-card {
+            background: var(--sidebar); padding: 40px; border-radius: 20px;
+            width: 100%; max-width: 400px; text-align: center; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar { width: 280px; background: var(--sidebar); display: flex; flex-direction: column; padding: 25px; border-right: 1px solid rgba(255,255,255,0.1); }
+        .nav-item { 
+            padding: 14px 18px; border-radius: 10px; margin-bottom: 8px; cursor: pointer; 
+            transition: 0.2s; font-weight: 600; color: #94a3b8; 
+        }
+        .nav-item:hover, .nav-item.active { background: var(--accent); color: #0f172a; }
+
+        /* Content Area */
+        .main-content { flex-grow: 1; padding: 60px; overflow-y: auto; background: linear-gradient(135deg, #0f172a 0%, #111b2d 100%); }
+        .section { display: none; animation: slideUp 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Form Styling */
+        .form-group { margin-bottom: 25px; max-width: 600px; }
+        label { display: block; margin-bottom: 10px; font-size: 0.75rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        input, select, textarea {
+            width: 100%; padding: 14px; background: #0b1120; border: 1px solid #334155;
+            color: white; border-radius: 10px; outline: none; font-size: 1rem;
+        }
+        .btn { 
+            padding: 14px 28px; border-radius: 10px; border: none; font-weight: 800; 
+            cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif;
+        }
+        .btn-primary { background: var(--accent); color: #0f172a; }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+
+        .status-msg { margin-top: 15px; font-weight: 600; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- AUTHENTICATION OVERLAY -->
+    <div id="login-overlay">
+        <div class="login-card">
+            <h2 style="margin-bottom: 30px; letter-spacing: -1px;">AI System Access</h2>
+            <input type="text" id="userInput" placeholder="Username" style="margin-bottom: 15px;">
+            <input type="password" id="passInput" placeholder="Password" style="margin-bottom: 25px;">
+            <button class="btn btn-primary" style="width: 100%;" onclick="validateLogin()">Login to Dashboard</button>
+            <p id="loginError" style="color: var(--danger); margin-top: 15px; display: none; font-size: 0.85rem;">Access Denied: Invalid Credentials</p>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <h1 style="font-size: 1.2rem; font-weight: 800; color: var(--accent); margin-bottom: 40px;">AOTEAROA<br>INTERACTIVE</h1>
+        <div class="nav-item active" onclick="switchTab('fleetTab', this)">Project Fleet</div>
+        <div class="nav-item" onclick="switchTab('staffTab', this)">Staff Roster</div>
+        <div class="nav-item" onclick="switchTab('mediaTab', this)">Gallery Manager</div>
+        <div class="nav-item" onclick="switchTab('userTab', this)">System Logins</div>
+        <div style="margin-top: auto; border-top: 1px solid #334155; padding-top: 20px;">
+            <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem;">← Exit to Public Site</a>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="main-content">
+        
+        <!-- PROJECT FLEET (REGO / IDENTIFIER / TYPE) -->
+        <section id="fleetTab" class="section active">
+            <h1>Project Fleet Management</h1>
+            <p style="color: #94a3b8; margin-bottom: 40px;">Add or update simulation units in the global registry.</p>
+            
+            <div class="form-group">
+                <label>Unit REGO</label>
+                <input type="text" id="fleetRego" placeholder="e.g. FENZ001">
+            </div>
+            <div class="form-group">
+                <label>IDENTIFIER</label>
+                <input type="text" id="fleetId" placeholder="e.g. Alpha Pumper">
+            </div>
+            <div class="form-group">
+                <label>Unit TYPE</label>
+                <select id="fleetType">
+                    <option value="Fire Engine">Fire Engine</option>
+                    <option value="Ambulance">Ambulance</option>
+                    <option value="Patrol Car">Patrol Car</option>
+                    <option value="CAD Interface">CAD Interface</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="saveData('fleet')">Update Fleet Data</button>
+            <p id="fleetStatus" class="status-msg" style="color: var(--success);">Fleet database updated!</p>
+        </section>
+
+        <!-- STAFF ROSTER -->
+        <section id="staffTab" class="section">
+            <h1>Staff Roster Management</h1>
+            <p style="color: #94a3b8; margin-bottom: 40px;">Manage active developers and administrative staff.</p>
+            <div class="form-group">
+                <label>Staff Name</label>
+                <input type="text" id="staffName">
+            </div>
+            <div class="form-group">
+                <label>Position / Role</label>
+                <input type="text" id="staffRole">
+            </div>
+            <button class="btn btn-primary" onclick="saveData('staff')">Update Staff Roster</button>
+            <p id="staffStatus" class="status-msg" style="color: var(--success);">Staff roster updated!</p>
+        </section>
+
+        <!-- SYSTEM ACCESS -->
+        <section id="userTab" class="section">
+            <h1>Create Administrative Logins</h1>
+            <p style="color: #94a3b8; margin-bottom: 40px;">Grant dashboard access to other authorized members.</p>
+            <div class="form-group">
+                <label>New Staff Username</label>
+                <input type="text" id="newAdminUser">
+            </div>
+            <div class="form-group">
+                <label>Access Password</label>
+                <input type="password" id="newAdminPass">
+            </div>
+            <button class="btn btn-primary" onclick="saveData('users')">Generate Login</button>
+            <p id="userStatus" class="status-msg" style="color: var(--success);">New user credentials created!</p>
+        </section>
+
+    </main>
+
+    <script>
+        // AUTH LOGIC
+        function validateLogin() {
+            const u = document.getElementById('userInput').value;
+            const p = document.getElementById('passInput').value;
+            
+            // Check against primary login or created admins
+            const savedAdmins = JSON.parse(localStorage.getItem('ai_admins')) || [];
+            const isExtraAdmin = savedAdmins.some(a => a.user === u && a.pass === p);
+
+            if ((u === "Jackson" && p === "Secure2026") || isExtraAdmin) {
+                document.getElementById('login-overlay').style.display = 'none';
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        // TAB SWITCHING
+        function switchTab(id, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            el.classList.add('active');
+        }
+
+        // DATA SAVING LOGIC
+        function saveData(type) {
+            let dataObj = {};
+            let feedbackId = "";
+
+            if (type === 'fleet') {
+                dataObj = { 
+                    rego: document.getElementById('fleetRego').value, 
+                    id: document.getElementById('fleetId').value, 
+                    type: document.getElementById('fleetType').value 
+                };
+                feedbackId = "fleetStatus";
+            } else if (type === 'staff') {
+                dataObj = { 
+                    name: document.getElementById('staffName').value, 
+                    role: document.getElementById('staffRole').value 
+                };
+                feedbackId = "staffStatus";
+            } else if (type === 'users') {
+                const newUser = { 
+                    user: document.getElementById('newAdminUser').value, 
+                    pass: document.getElementById('newAdminPass').value 
+                };
+                let currentAdmins = JSON.parse(localStorage.getItem('ai_admins')) || [];
+                currentAdmins.push(newUser);
+                localStorage.setItem('ai_admins', JSON.stringify(currentAdmins));
+                feedbackId = "userStatus";
+            }
+
+            // Save to browser memory
+            if (type !== 'users') {
+                let currentData = JSON.parse(localStorage.getItem('ai_global_data')) || {};
+                if (!currentData[type]) currentData[type] = [];
+                currentData[type].push(dataObj);
+                localStorage.setItem('ai_global_data', JSON.stringify(currentData));
+            }
+
+            // Show success message
+            const status = document.getElementById(feedbackId);
+            status.style.display = "block";
+            setTimeout(() => status.style.display = "none", 3000);
+        }
+    </script>
+</body>
+</html>

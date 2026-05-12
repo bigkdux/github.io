@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Aotearoa Interactive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary-accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .nav-container a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .nav-container a:hover, .nav-container a.active {
+            background: var(--primary-accent);
+            color: #0f172a;
+        }
+        .admin-link {
+            position: absolute;
+            right: 20px;
+            border: 1px solid var(--primary-accent) !important;
+        }
+
+        /* Hero Header */
+        .page-header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, rgba(15,23,42,0.5), var(--bg-dark));
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .page-header h1 { font-size: 3rem; font-weight: 800; color: var(--primary-accent); }
+
+        /* Project Grid */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Modern Project Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-10px); }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #2a364a;
+        }
+        
+        .card-content { padding: 25px; }
+        .card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--primary-accent);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+        /* Unit Data Table (REGO, IDENTIFIER, TYPE) */
+        .unit-specs {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .spec-label { color: var(--primary-accent); font-weight: 600; }
+        .spec-value { font-family: 'Courier New', monospace; color: var(--text-main); }
+
+        /* Footer */
+        footer {
+            background: #0b1120;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .copyright { color: var(--text-muted); font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.2rem; }
+            .admin-link { position: static; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="staff.html">Staff Team</a>
+            <a href="applications.html">Applications</a>
+            <a href="photos.html">Photos</a>
+            <a href="https://discord.gg/yourlink" target="_blank">Discord</a>
+            <a href="admin.html" class="admin-link">Admin Login</a>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Our Projects</h1>
+        <p style="color: var(--text-muted); margin-top: 10px;">Advanced simulation systems for New Zealand Emergency Services.</p>
+    </div>
+
+    <div class="container">
+        <div class="project-grid">
+
+            <!-- FENZ CAD PROJECT -->
+            <article class="card">
+                <img src="fenz_cad.png" alt="FENZ CAD Terminal" class="card-image">
+                <div class="card-content">
+                    <span class="card-tag">Simulation Tools</span>
+                    <h3>FENZ Dispatch Terminal</h3>
+                    <p>A high-performance Computer-Aided Dispatch system featuring live map integration and automated K-code management.</p>
+                    
+                    <div class="unit-specs">
+                        <div class="spec-row"><span class="spec-label">REGO</span><span class="spec-value">FENZ-CAD-V2</span></div>
+                        <div class="spec-row"><span class="spec-label">IDENTIFIER</span><span class="spec-value">NZ-FIRE-DISPATCH</span></div>
+                        <div class="spec-row"><span class="spec-label">TYPE</span><span class="spec-value">Web Integration</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ST JOHN ePRF PROJECT -->
+            <article class="card">
+                <img src="stjohn_system.png" alt="St John System" class="card-image">
+                <div class="card-content">
+                    <span class="card-tag">Medical Systems</span>
+                    <h3>St John ePRF System</h3>
+                    <p>Electronic Patient Report Form software designed for realistic medical documentation in high-stakes environments.</p>
+                    
+                    <div class="unit-specs">
+                        <div class="spec-row"><span class="spec-label">REGO</span><span class="spec-value">STJ-EPRF-09</span></div>
+                        <div class="spec-row"><span class="spec-label">IDENTIFIER</span><span class="spec-value">AMB-MED-LOG</span></div>
+                        <div class="spec-row"><span class="spec-label">TYPE</span><span class="spec-value">Python Executable</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- POLICE RADAR PROJECT -->
+            <article class="card">
+                <img src="police_radar.png" alt="Police Radar" class="card-image">
+                <div class="card-content">
+                    <span class="card-tag">Traffic Enforcement</span>
+                    <h3>Advanced Audio Radar</h3>
+                    <p>Roblox-integrated radar system with high-fidelity audio feedback for realistic traffic enforcement simulations.</p>
+                    
+                    <div class="unit-specs">
+                        <div class="spec-row"><span class="spec-label">REGO</span><span class="spec-value">NZP-RAD-44</span></div>
+                        <div class="spec-row"><span class="spec-label">IDENTIFIER</span><span class="spec-value">TRAFFIC-UNIT-1</span></div>
+                        <div class="spec-row"><span class="spec-label">TYPE</span><span class="spec-value">LocalScript System</span></div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="copyright">
+            &copy; 2026 Aotearoa Interactive. All Rights Reserved.<br>
+            Protected under the Copyright Act 1994.
+        </p>
+    </footer>
+
+</body>
+</html>
