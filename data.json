@@ -1,6 +1,12 @@
 {
   "staff": [],
-  "fleet": [],
+  "fleet": [
+    {
+      "rego": "jjjj",
+      "identifier": "jjjj",
+      "type": "jjjj"
+    }
+  ],
   "news": [],
   "users": []
 }
