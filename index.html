@@ -6,101 +6,47 @@
     <title>Aotearoa Interactive | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #f8fafc; --muted: #94a3b8; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #f8fafc; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-        
-        /* Navigation */
         header { position: sticky; top: 0; z-index: 1000; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 8px 12px; border-radius: 6px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { background: var(--accent); color: #000; }
-        .admin-login { border: 1px solid var(--accent); padding: 8px 16px; border-radius: 6px; text-decoration: none; color: var(--accent); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        .admin-login:hover { background: var(--accent); color: #000; }
-
-        /* Content */
-        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(rgba(15, 23, 42, 0.7), var(--bg)), url('header-bg.jpg') center/cover; }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .hero p { color: var(--accent); font-style: italic; font-size: 1.2rem; }
-        .container { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 0 20px; }
-        .card { background: var(--card); padding: 25px; border-radius: 16px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.05); }
-        .section-title { font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px; }
-
-        /* News & FAQ */
-        .news-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0; }
-        details { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; }
-        
-        /* Footer */
-        footer { background: #0b1120; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .socials { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
-        .socials a { color: var(--text); text-decoration: none; font-weight: 600; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 8px 12px; border-radius: 6px; transition: 0.3s; margin-right: 10px; }
+        .nav-links a:hover { background: var(--accent); color: #000; }
+        .admin-login { border: 1px solid var(--accent); padding: 8px 16px; border-radius: 6px; text-decoration: none; color: var(--accent); font-weight: 600; }
+        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(rgba(15, 23, 42, 0.8), var(--bg)); }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .card { background: var(--card); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
     <header>
         <nav class="nav-container">
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
-                <a href="staff.html">Staff Team</a>
-                <a href="apply.html">Applications</a>
-                <a href="photos.html">Photos</a>
-                <a href="https://discord.gg/yourlink" target="_blank">Discord</a>
+                <a href="staff.html">Staff</a>
             </div>
             <a href="admin.html" class="admin-login">Admin Login</a>
         </nav>
     </header>
-
     <div class="hero">
-        <h1>Aotearoa Interactive</h1>
-        <p>"Innovating the Future of New Zealand Simulations"</p>
+        <h1 style="font-size: 3rem; margin-bottom: 10px;">Aotearoa Interactive</h1>
+        <p style="color: var(--accent); font-style: italic;">Innovating New Zealand Simulations</p>
     </div>
-
     <div class="container">
-        <main>
-            <section class="card">
-                <h2 class="section-title">Updates & News</h2>
-                <div class="news-item">
-                    <small style="color: var(--accent);">MAY 13, 2026</small>
-                    <h3>Digital Hub Launch</h3>
-                    <p style="color: var(--muted);">Welcome to our new centralized website for all development updates.</p>
-                </div>
-            </section>
-
-            <section class="card">
-                <h2 class="section-title">FAQ</h2>
-                <details><summary>How do I join the team?</summary><p>Visit the Applications page to view open roles.</p></details>
-                <details><summary>Which platforms do you support?</summary><p>We specialize in Roblox and FiveM simulation environments.</p></details>
-            </section>
-        </main>
-
-        <aside>
-            <section class="card" style="text-align: center;">
-                <h2 class="section-title">Staff Member of the Month</h2>
-                <div style="width: 80px; height: 80px; background: #334155; border-radius: 50%; margin: 0 auto 15px; border: 2px solid var(--accent);"></div>
-                <h3>Jackson</h3>
-                <p style="font-size: 0.9rem; color: var(--muted);">Director & Lead Developer</p>
-            </section>
-            <section class="card">
-                <h3 style="margin-bottom: 15px;">Proudly Affiliated With</h3>
-                <div style="display: flex; gap: 10px; justify-content: center;">
-                    <img src="logo1.png" alt="Affiliate" style="width: 60px; height: 60px; background: #000; border-radius: 8px;">
-                </div>
-            </section>
-        </aside>
-    </div>
-
-    <footer>
-        <div class="socials">
-            <a href="mailto:contact@aotearoa.com">Email</a>
-            <a href="#">Discord</a>
-            <a href="#">TikTok</a>
+        <div class="card">
+            <h2 style="margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px;">Latest News</h2>
+            <p>Welcome to the global hub for Aotearoa Interactive. Our fleet and staff databases are now synced via GitHub.</p>
         </div>
-        <p style="color: var(--muted); font-size: 0.85rem;">
-            &copy; 2026 Aotearoa Interactive. All Rights Reserved.<br>
-            Protected under the Copyright Act 1994.
-        </p>
+        <div class="card">
+            <h3>Community FAQ</h3>
+            <p style="font-size: 0.9rem; margin-top: 10px;">Check our projects page for the latest FENZ and St John assets.</p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2026 Aotearoa Interactive. Protected under the Copyright Act 1994.
     </footer>
 </body>
 </html>
